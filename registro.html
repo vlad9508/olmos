@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>.: BookMedik :.</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="res/bootstrap3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script >
+    	$(document).ready(function(){
+
+    		$("#login").click(function(){
+    			$(location).attr('href',"index.html");
+    		});
+            $("#enviar").click(function(e){
+          e.preventDefault();
+          var number = $("#number").val();
+          var name = $("#name").val();
+          var lastname = $("#lastname").val();
+          var address = $("#address1").val();
+          var email = $("#email1").val();
+          var phone = $("#phone1").val();
+          var pass = $("#pass").val();
+          var pass1 = $("#pass1").val();
+          if (number == "" | name == "" | lastname == "" | address == "" | email == "" | phone == "" | pass == ""  ) {
+            alert("falta algun campo por llenar...");
+          } else {
+            if (pass == pass1) {
+                $.getJSON("nuevo.php",{
+                    "numero" : number, "nombre" : name, "apellido" : lastname, "direccion" : address, "correo" : email, "telefono" : phone, "contrasena" : pass
+                })
+                .done(function(data){
+                    var mensaje1 = data.mensaje;
+                    var existe = data.existe;
+                    alert(mensaje1);
+                    if (existe == "2") {
+                      $(location).attr('href',"index.html");
+                    } else {}
+                    
+                });
+            } else {
+                alert("las Contraseñas no son iguales...")
+            }
+            
+          }
+        });
+    	});
+    </script>
+
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >Tablas <sup><small><span class="label label-info">v1.0</span></small></sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+        	<ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+        <button style="border: none; background: none;"> 
+        <i class="fa fa-sign-in ext fa-3x" id="login" aria-hidden="true" style="color: #ffffff" ></i>
+        </button>
+
+
+
+        </li></ul>
+
+
+
+
+
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+       <div id="page-wrapper">
+
+<div class="row">
+    <div class="col-sm-12">
+    <h1>Nuevo Paciente</h1>
+    <br>
+        <form class="form-horizontal" >
+
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">No. Afiliación*</label>
+    <div class="col-sm-6">
+      <input name="number" class="form-control" id="number" placeholder="No. Afiliación" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Nombre*</label>
+    <div class="col-sm-6">
+      <input name="name" class="form-control" id="name" placeholder="Nombre" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Apellido*</label>
+    <div class="col-sm-6">
+      <input name="lastname" required="" class="form-control" id="lastname" placeholder="Apellido" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Direccion*</label>
+    <div class="col-sm-6">
+      <input name="address" class="form-control" id="address1" placeholder="Direccion" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Email*</label>
+    <div class="col-sm-6">
+      <input name="email" class="form-control" id="email1" placeholder="Email" type="text">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Telefono*</label>
+    <div class="col-sm-6">
+      <input name="phone" class="form-control" id="phone1" placeholder="Telefono" type="text">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Contraseña*</label>
+    <div class="col-sm-6">
+      <input name="phone" class="form-control" id="pass" placeholder="contraseña" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-sm-2 control-label">Contraseña*</label>
+    <div class="col-sm-6">
+      <input name="phone" class="form-control" id="pass1" placeholder="Confirmar Contraseña" type="text">
+    </div>
+  </div>
+  <div class="col-sm-9" style="margin-left: -5%; ">
+
+  <p class="alert alert-info">* Campos obligatorios</p>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary"  id="enviar">Agregar Usuario</button>
+    </div>
+  </div>
+</form>
+    </div>
+</div>
+
+
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+    <!-- JavaScript -->
+
+<script src="res/bootstrap3/js/bootstrap.min.js"></script>
+
+
+
+</body></html>

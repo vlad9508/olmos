@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>.: BookMedik :.</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="res/bootstrap3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script >
+      $(document).ready(function(){
+
+        $.getJSON("citas.php", {
+            "asunto" : "hola"   
+          })
+          . done(function(data){
+            var output;
+            $.each(data.datos.users, function(key, value) {
+
+                    output += '<tr><td class="agenda-date" class="active" rowspan="1">';
+                        output += '<div class="dayofweek">' +  value['date_at'] + " </div></td>";
+                        output += '<td class="agenda-time">' +  value['time_at'] + "</td>";
+                        output += '<td class="agenda-events"><div class="agenda-event">' + value['asunto'] + '</div></td></tr>';
+                         
+                    
+                    // recorremos los valores de cada usuario
+                  
+                    
+                });
+            $("#quiza").html(output);
+                
+          });
+        $("#out").click(function(){
+          $(location).attr('href',"index.html");
+        });
+        
+      });
+    </script>
+    <style type="text/css">
+      .agenda {  }
+
+/* Dates */
+.agenda .agenda-date { width: 170px; }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-time { width: 140px; } 
+
+
+/* Events */
+.agenda .agenda-events {  } 
+.agenda .agenda-events .agenda-event {  } 
+
+@media (max-width: 767px) {
+    
+}
+    </style>
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >BookMedik <sup><small><span class="label label-info">v1.0</span></small></sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+         
+          <ul class="nav navbar-nav side-nav">
+          
+          <li><a href="home.html"><i class="fa fa-home"></i> Inicio</a></li>
+          <li><a href="new.html"><i class="fa fa-asterisk"></i> Nueva Cita</a></li>
+          <li><a href="citas.html"><i class="fa fa-calendar"></i> Citas</a></li>
+                  </ul>
+
+
+
+
+
+
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+        <button style="border: none; background: none;"> 
+        <i class="fa fa-sign-out ext fa-3x" id="out" aria-hidden="true" style="color: #ffffff" ></i>
+        </button>
+
+
+
+        </li></ul></div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+
+<div class="row">
+	<div class="col-sm-12">
+<div class="btn-group pull-right">
+<!--<div class="btn-group pull-right">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-download"></i> Descargar <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="report/clients-word.php">Word 2007 (.docx)</a></li>
+  </ul>
+</div>
+-->
+</div>
+<a href="./index.php?view=oldreservations" class="btn btn-default pull-right">Citas Anteriores</a>
+		<h1>Citas</h1>
+<br>
+<form class="form-horizontal" role="form">
+<input name="view" value="reservations" type="hidden">
+
+  <div class="form-group">
+    <div class="col-sm-5">
+		<div class="input-group">
+		  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+		  <input name="q" value="" class="form-control" placeholder="Palabra clave" type="text">
+		</div>
+    </div>
+    <div class="col-sm-4">
+		<div class="input-group">
+		  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		  <input name="date_at" value="" class="form-control" type="date">
+		</div>
+    </div>
+
+    <div class="col-sm-2 col-sm-offset-1">
+    <button class="btn btn-primary btn-block">Buscar</button>
+    </div>
+
+  </div>
+</form>
+
+		<div class="container">
+
+
+    
+    <hr />
+
+    <div class="agenda">
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                    </tr>
+                </thead>
+                <tbody id="quiza">
+                    <!-- Single event in a single day -->
+                    
+                    
+                    <!-- Multiple events in a single day (note the rowspan) -->
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+	</div>
+</div>
+
+
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+
+<script src="res/bootstrap3/js/bootstrap.min.js"></script>
+
+
+
+</body></html>

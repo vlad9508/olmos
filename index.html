@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>.: BookMedik :.</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="res/bootstrap3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script >
+    	$(document).ready(function(){
+    		$("#nuevo").click(function(){
+    			$(location).attr('href',"registro.html");
+    		});
+            $("#inicio").click(function(e){
+               e.preventDefault(); 
+               var numero = $("#numero").val();
+               var pass = $("#pass").val();
+               $.getJSON("inicio.php", {
+                "numero" : numero, "pass" : pass
+               })
+               . done(function(data){
+                var mensaje = data.mensaje;
+                    var existe = data.existe;
+                    var tipos = data.tipos;
+                    if (existe == 1) {
+                        if (tipos == 1) {
+                            $(location).attr('href',"home.html"); 
+                        } else {
+                            $(location).attr('href',"homeA.html");
+                        }
+                    } else {
+                        alert(mensaje);
+                    }
+               });
+            });
+    	});
+    </script>
+
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >Tablas <sup><span class="label label-info"><i class="fa fa-h-square ext fa-2x" aria-hidden="true"></i></span></sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+        	<ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+        <button style="border: none; background: none;"> 
+        <i class="fa fa-user-plus ext fa-3x" id="nuevo" aria-hidden="true" style="color: #ffffff" ></i>
+        </button>
+
+
+
+        </li></ul>
+
+
+
+
+
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+
+<br><br><br><br><br>
+<div class="row vertical-offset-100">
+    	<div class="col-sm-6 col-sm-offset-1">
+    	    		<div class="panel panel-primary">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Iniciar Sesion</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form >
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="No. Afiliación" id="numero" name="number" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Contraseña" name="password" id="pass" value="" type="password">
+			    		</div>
+			    		
+                        <button class="btn btn-lg btn-primary btn-block" id="inicio">Iniciar Sesion</button>
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+
+<script src="res/bootstrap3/js/bootstrap.min.js"></script>
+
+
+
+</body></html>

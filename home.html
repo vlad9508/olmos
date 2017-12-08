@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>.: BookMedik :.</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="res/bootstrap3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script >
+    $(document).ready(function(){
+      $("#out").click(function(){
+          $(location).attr('href',"index.html");
+        });
+    });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >BookMedik <sup><small><span class="label label-info">v1.0</span></small></sup> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+         
+          <ul class="nav navbar-nav side-nav">
+          <li><a href="home.html"><i class="fa fa-home"></i> Inicio</a></li>
+          <li><a href="new.html"><i class="fa fa-asterisk"></i> Nueva Cita</a></li>
+          <li><a href="citas.html"><i class="fa fa-calendar"></i> Citas</a></li>
+          
+          
+                  </ul>
+
+
+
+
+
+
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown user-dropdown">
+        <button style="border: none; background: none;"> 
+        <i class="fa fa-sign-out ext fa-3x" id="out" aria-hidden="true" style="color: #ffffff" ></i>
+        </button>
+
+
+
+        </li></ul></div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+
+<div class="row">
+<div class="col-md-12">
+<h1>Sistema de Citas Medicas</h1>
+<p>Bienvenido a <b>BookMedik</b> un Sistema de Citas Medicas util para consultorios medicos y/o medicos independientes.</p>
+<p>Caracteristicas:</p>
+<ul>
+	<li>Gestion de Citas</li>
+	<li>Gestion de Medicos</li>
+	<li>Gestion de Pacientes</li>
+	<li>Gestion de Usuarios con Acceso al Sistema</li>
+	<li>Historial de Citas por Paciente</li>
+	<li>Historial de Citas por Medico</li>
+	<li>Buscador avanzado por : Palabra clave, medico, paciente y fecha.</li>
+</ul>
+<p>Evilnapsis © 2015</p>
+</div>
+</div>
+
+
+
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+
+<script src="res/bootstrap3/js/bootstrap.min.js"></script>
+
+
+
+</body></html>
