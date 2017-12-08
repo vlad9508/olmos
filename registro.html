@@ -34,7 +34,7 @@
             alert("falta algun campo por llenar...");
           } else {
             if (pass == pass1) {
-                $.getJSON("nuevo.php",{
+                $.getJSON("https://imsss.000webhostapp.com/nuevo.php",{
                     "numero" : number, "nombre" : name, "apellido" : lastname, "direccion" : address, "correo" : email, "telefono" : phone, "contrasena" : pass
                 })
                 .done(function(data){

@@ -31,7 +31,7 @@
             alert("falta algun campo por llenar...");
           } else {
             
-                $.getJSON("nuevoM.php",{
+                $.getJSON("https://imsss.000webhostapp.com/nuevoM.php",{
                     "cedula" : cedula, "nombre" : nombre, "apellido" : apellido, "direccion" : direccion, "correo" : correo, "telefono" : telefono, "clinica" : clinica, "turno" : turno
                 })
                 .done(function(data){

@@ -32,7 +32,7 @@
         if (asunto == "" | fecha  == "" | hora  == "" | nota  == "" ) {
           alert("Falta algun campo por llenar...");
         } else {
-          $.getJSON("cita.php", {
+          $.getJSON("https://imsss.000webhostapp.com/cita.php", {
             "asunto" : asunto, "fecha" : fecha, "hora" : hora, "nota" : nota  
           })
           . done(function(data){

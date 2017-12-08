@@ -23,7 +23,7 @@
                e.preventDefault(); 
                var numero = $("#numero").val();
                var pass = $("#pass").val();
-               $.getJSON("inicio.php", {
+               $.getJSON("https://imsss.000webhostapp.com/inicio.php", {
                 "numero" : numero, "pass" : pass
                })
                . done(function(data){
